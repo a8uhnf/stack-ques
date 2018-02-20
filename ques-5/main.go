@@ -10,7 +10,6 @@ import (
 )
 
 func main()  {
-	fmt.Println("Hello World!!!")
 	wd, err := os.Getwd()
 	if err != nil {
 		panic(err)
@@ -24,6 +23,7 @@ func main()  {
 
 	decode := scheme.Codecs.UniversalDeserializer().Decode
 	obj, _, err := decode(byt, nil, nil)
-	c := obj.(*v1.Pod)
-	fmt.Println(c)
+	c := obj.(*v1.List)
+
+	fmt.Println(string(c.Items[0]))
 }
